@@ -43,20 +43,19 @@ async function getMetaData(slug: string) {
   return response.data;
 }
 
-// DONT DELEEEEETTEE
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: {slug: string};
-// }): Promise<Metadata> {
-//   const meta = await getMetaData(params.slug);
-//   const metadata = meta[0].attributes.seo;
+export async function generateMetadata({
+  params,
+}: {
+  params: {slug: string};
+}): Promise<Metadata> {
+  const meta = await getMetaData(params.slug);
+  const metadata = meta[0].attributes.seo;
 
-//   return {
-//     title: metadata.metaTitle,
-//     description: metadata.metaDescription,
-//   };
-// }
+  return {
+    title: metadata.metaTitle,
+    description: metadata.metaDescription,
+  };
+}
 
 export default async function CourseRoute({params}: {params: {slug: string}}) {
   const {slug} = params;

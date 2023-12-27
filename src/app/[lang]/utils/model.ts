@@ -5,18 +5,18 @@ type StrapiResponse<T> = {
   message: string;
 };
 
-export interface Attribute {
-  url: string;
-  alternativeText?: any;
-  caption?: any;
-  width: number;
-  height: number;
-}
+// export interface Attribute {
+//   url: string;
+//   alternativeText?: any;
+//   caption?: any;
+//   width: number;
+//   height: number;
+// }
 
-export interface Data {
-  id: number;
-  attributes: Attribute;
-}
+// export interface Data {
+//   id: number;
+//   attributes: Attribute;
+// }
 
 export interface Picture {
   data: Data;

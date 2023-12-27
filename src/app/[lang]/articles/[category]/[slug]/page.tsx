@@ -80,7 +80,7 @@ export default function Profile() {
   return (
     <div>
       <PageHeader heading="Our Articles" text="Checkout Something Cool" />
-      <Articles data={data}>
+      <Articles data={data} tags={[]} setSelectedTag={undefined}>
         {meta!.pagination.start + meta!.pagination.limit <
           meta!.pagination.total && (
           <div className="flex justify-center">

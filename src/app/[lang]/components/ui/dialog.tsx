@@ -5,15 +5,15 @@ import {AiOutlineClose} from "react-icons/ai";
 
 import {cn} from "@/utils/tailwind-helpers";
 
+interface DPProps extends DialogPrimitive.DialogPortalProps {
+  className?: string;
+}
+
 const Dialog = DialogPrimitive.Root;
 
 const DialogTrigger = DialogPrimitive.Trigger;
 
-const DialogPortal = ({
-  className,
-  children,
-  ...props
-}: DialogPrimitive.DialogPortalProps) => (
+const DialogPortal = ({className, children, ...props}: DPProps) => (
   <DialogPrimitive.Portal className={cn(className)} {...props}>
     <div className="fixed inset-0 z-50 flex items-start justify-center sm:items-center">
       {children}
@@ -41,7 +41,7 @@ const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
 >(({className, children, ...props}, ref) => (
-  <DialogPortal>
+  <DialogPortal className={""}>
     <DialogOverlay />
     <DialogPrimitive.Content
       ref={ref}

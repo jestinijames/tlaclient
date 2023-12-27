@@ -21,9 +21,9 @@ export async function fetchAPI(
 
     // Build request URL
     const queryString = qs.stringify(urlParamsObject);
-    const requestUrl = `${getStrapiURL(
+    const requestUrl = getStrapiURL(
       `/api${path}${queryString ? `?${queryString}` : ""}`
-    )}`;
+    );
 
     // Trigger API call
     const response = await fetch(requestUrl, mergedOptions);

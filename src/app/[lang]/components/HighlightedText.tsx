@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 interface HighlightedTextProps {
   text: string;
   tag: string;
