@@ -12,11 +12,13 @@ import {MenuContext} from "@/context/menu.context";
 import {motion} from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import ReactPlayer from "react-player";
 import Particles from "react-tsparticles";
 import {loadFull} from "tsparticles";
 
 import AnimatedText from "@/components/ui/animated-text";
 import {Button} from "@/components/ui/button";
+import {Dialog, DialogContent, DialogTrigger} from "@/components/ui/dialog";
 import LayoutContainer from "@/components/ui/layout-container";
 
 import {getStrapiMedia} from "@/utils/api-helpers";
@@ -83,11 +85,7 @@ export default function Hero({data}: HeroProps) {
               {data.description}
             </p>
             <div className="flex items-center self-start mt-2 lg:self-center">
-              <Button className="flex items-center bg-black text-white p-2.5 px-6 rounded-lg text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-black border-2 border-solid border-transparent hover:border-dark md:p-2 md:px-4 md:text-base">
-                Watch Latest Podcast
-                <span className="sr-only">Watch Latest Podcast</span>
-                <RenderIcon text="stackpop" className="w-6 ml-1" />
-              </Button>
+              <LatestPodcast />
             </div>
           </div>
         </div>
@@ -220,5 +218,22 @@ function CoursesRegister({curvedTextimgUrl}: {curvedTextimgUrl: any}) {
         </MotionLink>
       </div>
     </div>
+  );
+}
+
+function LatestPodcast() {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button className="flex items-center bg-black text-white p-2.5 px-6 rounded-lg text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-black border-2 border-solid border-transparent hover:border-dark md:p-2 md:px-4 md:text-base">
+          Watch Latest Podcast
+          <span className="sr-only">Watch Latest Podcast</span>
+          <RenderIcon text="stackpop" className="w-6 ml-1" />
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="rounded-3xl container-sm:max-w-[700px] bg-light absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <ReactPlayer url={`https://www.youtube.com/watch?v=FumDjVFQ3ds&t=1s`} />
+      </DialogContent>
+    </Dialog>
   );
 }

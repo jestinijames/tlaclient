@@ -96,7 +96,7 @@ export default async function LayoutRoute({
   );
 }
 
-export async function generateStaticParams() {
+/*export async function generateStaticParams() {
   const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
   const path = `/articles`;
   const options = {headers: {Authorization: `Bearer ${token}`}};
@@ -118,4 +118,4 @@ export async function generateStaticParams() {
       };
     }) => ({slug: article.attributes.slug, category: article.attributes.slug})
   );
-}
+} */
