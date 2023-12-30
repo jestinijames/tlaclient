@@ -23,6 +23,7 @@ import LayoutContainer from "@/components/ui/layout-container";
 
 import {getStrapiMedia} from "@/utils/api-helpers";
 import {RenderIcon} from "@/utils/render-icon";
+import {Paragraph} from "@/utils/typography";
 
 interface Button {
   id: string;
@@ -59,36 +60,108 @@ export default function Hero({data}: HeroProps) {
   //  const matches = useMediaQuery(1200);
 
   return (
-    <div className="flex items-center text-white w-full min-h-screen">
+    // <div>
+    //   <ParticleContainer />
+    //   <LayoutContainer className="pt-0 md:pt-16 sm:p-8">
+    //     {/* <div className="flex items-center justify-between w-full lg:flex-col">
+    //       <div className="w-1/2 md:w-full">
+    //         <Image
+    //           alt="bibleCross"
+    //           src={bibleCrossimgUrl}
+    //           className="w-full h-auto lg:hidden md:inline-block md:w-full"
+    //           width={737}
+    //           height={678}
+    //           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+    //           priority
+    //         />
+    //       </div>
+    //       <div className="w-1/2 flex flex-col items-center self-center lg:w-full lg:text-center">
+    //         <AnimatedText
+    //           text={data.title}
+    //           className="!text-6xl !text-left
+    //         xl:!text-5xl lg:!text-center lg:!text-6xl md:!text-5xl sm:!text-3xl
+    //         "
+    //         />
+    //         <p className="my-4 text-base font-medium md:text-sm sm:text-xs">
+    //           {data.description}
+    //         </p>
+    //         <div className="flex items-center self-start mt-2 lg:self-center">
+    //           <LatestPodcast />
+    //         </div>
+    //       </div>
+    //     </div> */}
+    //     <div className="flex w-full flex-col items-center justify-center mt-20">
+    //       {/* Cover Image Container */}
+    //       <div className="w-full px-2  mx-auto">
+    //         <div className="relative aspect-w-16 aspect-h-13 container-sm:aspect-h-9 container-lg:aspect-h-8 container-x:aspect-h-5 rounded-3xl container-md:rounded-[40px] overflow-hidden z-0">
+    //           <Image
+    //             alt="coverImage"
+    //             src={bibleCrossimgUrl}
+    //             className="object-cover w-full  h-full rounded-3xl container-md:rounded-[40px]"
+    //             width={1280}
+    //             height={720}
+    //             sizes="(max-width: 1280px) 100vw, 1536px"
+    //             priority
+    //           />
+    //           <div className="absolute inset-0 bg-black text-white bg-opacity-30 flex flex-col items-center justify-center">
+    //             <AnimatedText
+    //               text={data.title}
+    //               className="!text-6xl inline-block align-middle
+    //         xl:!text-5xl lg:!text-center lg:!text-6xl md:!text-5xl sm:!text-3xl
+    //         "
+    //             />
+    //             <p className="my-4 text-white font-medium md:text-sm sm:text-xs">
+    //               {data.description}
+    //             </p>
+
+    //             <LatestPodcast />
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </LayoutContainer>
+    //   <CoursesRegister curvedTextimgUrl={curvedTextimgUrl} />
+    // </div>
+
+    <div>
       <ParticleContainer />
-      <LayoutContainer className="pt-0 md:pt-16 sm:p-8">
-        <div className="flex items-center justify-between w-full lg:flex-col">
-          <div className="w-1/2 md:w-full">
-            <Image
-              alt="bibleCross"
-              src={bibleCrossimgUrl}
-              className="w-full h-auto lg:hidden md:inline-block md:w-full"
-              width={737}
-              height={678}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
-              priority
-            />
-          </div>
-          <div className="w-1/2 flex flex-col items-center self-center lg:w-full lg:text-center">
-            <AnimatedText
-              text={data.title}
-              className="!text-6xl !text-left
+      <LayoutContainer className="pt-0 container-md:pt-16 sm:p-8">
+        <section className="relative overflow-hidden active">
+          <div className="px-4 container-md:px-10">
+            <div
+              className="rounded-2xl overflow-hidden bg-no-repeat bg-cover bg-center"
+              style={{
+                backgroundImage: `url(${bibleCrossimgUrl})`,
+              }}
+            >
+              <div className="bg-black/60 rounded-2xl">
+                <div>
+                  <div className="p-6 relative">
+                    <div className="flex h-full items-center justify-center py-36">
+                      <div className="text-center max-w-3xl mx-auto relative">
+                        <span className="py-1 px-3 rounded-md text-sm font-medium uppercase tracking-wider text-white bg-white/10">
+                          Welcome to
+                        </span>
+                        <AnimatedText
+                          text={data.title}
+                          className="!text-6xl inline-block align-middle
             xl:!text-5xl lg:!text-center lg:!text-6xl md:!text-5xl sm:!text-3xl
             "
-            />
-            <p className="my-4 text-base font-medium md:text-sm sm:text-xs">
-              {data.description}
-            </p>
-            <div className="flex items-center self-start mt-2 lg:self-center">
-              <LatestPodcast />
+                        />
+                        <Paragraph className="my-4 text-white font-medium md:text-sm sm:text-xs">
+                          {data.description}
+                        </Paragraph>
+                        <div className="flex justify-center">
+                          <LatestPodcast />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </section>
       </LayoutContainer>
       <CoursesRegister curvedTextimgUrl={curvedTextimgUrl} />
     </div>
@@ -225,7 +298,7 @@ function LatestPodcast() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="flex items-center bg-black text-white p-2.5 px-6 rounded-lg text-lg font-semibold transition-all duration-300 hover:bg-white hover:text-black border-2 border-solid border-transparent hover:border-dark md:p-2 md:px-4 md:text-base">
+        <Button className="flex-shrink-0 relative h-auto inline-flex items-center justify-center rounded-full transition-colors border-transparent bg-black hover:bg-white hover:text-black text-white text-sm sm:text-base font-medium py-3 px-4 container-sm:py-3.5 container-sm:px-6 mt-8">
           Watch Latest Podcast
           <span className="sr-only">Watch Latest Podcast</span>
           <RenderIcon text="stackpop" className="w-6 ml-1" />
