@@ -27,7 +27,7 @@ function selectedFilter(current: string, selected: string) {
     : "px-3 py-1 rounded-lg hover:underline dark:bg-violet-400 dark:text-gray-900";
 }
 
-export default function ArticleSelect({
+export function ArticleSelect({
   categories,
   articles,
   params,

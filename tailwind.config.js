@@ -1,8 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "class",
-  purge: ["./src/**/*.tsx"],
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  purge: {
+    enabled: process.env.NODE_ENV === 'production',
+    content: [
+      './src/**/*.{js,ts,jsx,tsx}',
+      './next.config.js', // Add the next.config.js file to content for Next.js
+      // Add any other files or patterns you want to include for purge here
+    ],
+  },
+  content: [
+    './src/**/*.{js,ts,jsx,tsx}',
+    './next.config.js', // Add the next.config.js file to content for Next.js
+    // Add any other files or patterns you want to include for purge here
+  ],
   theme: {
     lineClamp: {
       1: 1,

@@ -26,6 +26,7 @@ module.exports = {
     "plugin:jsx-a11y/recommended", // Enable recommended rules from eslint-plugin-jsx-a11y.
     "plugin:storybook/recommended", // Enable recommended rules from eslint-plugin-storybook.
     "prettier", // Enables prettier rules.
+    "plugin:next/recommended"
   ],
 
   // Define the parser that ESLint will use.
@@ -49,6 +50,7 @@ module.exports = {
     "react-hooks",
     "react-refresh",
     "storybook",
+    "next"
   ],
 
   // Define the rules for your project.

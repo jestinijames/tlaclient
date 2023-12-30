@@ -72,7 +72,6 @@
     "tailwind-merge": "^1.14.0",
     "tailwind-scrollbar": "^3.0.5",
     "tsparticles": "^2.12.0",
-    
     "zod": "^3.22.4"
   },
   "devDependencies": {
@@ -92,6 +91,7 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jest-dom": "^5.1.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-next": "^0.0.0",
     "eslint-plugin-no-relative-import-paths": "^1.5.3",
     "eslint-plugin-prettier": "5.0.0-alpha.2",
     "eslint-plugin-react": "^7.33.2",
@@ -100,6 +100,7 @@
     "eslint-plugin-sort-exports": "^0.8.0",
     "eslint-plugin-storybook": "^0.6.15",
     "eslint-plugin-testing-library": "^5.11.1",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.32",
     "prettier": "^3.1.1",
     "prettier-plugin-tailwindcss": "^0.3.0",
@@ -107,8 +108,7 @@
     "tailwindcss": "^3.4.0",
     "tailwindcss-line-clamp": "^1.0.5",
     "tsx": "^4.7.0",
-    "typescript": "^5.3.3",
-    "npm-run-all": "^4.1.5"
+    "typescript": "^5.3.3"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": "eslint --ignore-path .gitignore --fix --max-warnings 0 \"src/**/*.{ts,tsx,js,jsx}\"",
