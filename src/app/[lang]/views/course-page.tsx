@@ -55,10 +55,10 @@ export default function CoursePage({content}: {content: Content}) {
         label: "Information",
         content: <Information />,
       },
-      curriculam: {
-        name: "curriculam",
-        label: "Curriculam",
-        content: <Curriculam />,
+      curriculum: {
+        name: "curriculum",
+        label: "curriculum",
+        content: <Curriculum />,
       },
     };
   }, [content]);
@@ -273,7 +273,7 @@ function Information() {
   );
 }
 
-function Curriculam() {
+function Curriculum() {
   return (
     <>
       <Heading4>Coming Soon</Heading4>
