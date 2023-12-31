@@ -133,7 +133,7 @@ export default function CourseList({
                         <div>
                           <span className="hidden container-sm:inline">
                             Other
-                          </span>{" "}
+                          </span>
                           Categories
                         </div>
                         <LuChevronsUpDown className="w-4 h-4 ms-2 -me-1" />
@@ -155,7 +155,7 @@ export default function CourseList({
                             onClick={(event) => {
                               handleCategorySelect(
                                 event,
-                                categories[0].attributes.slug
+                                ""
                               );
                             }}
                           >
@@ -190,7 +190,7 @@ export default function CourseList({
                                   onClick={(event) => {
                                     handleCategorySelect(
                                       event,
-                                      categories[0].attributes.slug
+                                      category.attributes.name
                                     );
                                   }}
                                 >
@@ -288,7 +288,7 @@ export default function CourseList({
                 course.attributes.cover.data.attributes.url
               );
 
-              const authors = course.attributes.authors;
+              //const authors = course.attributes.authors;
               const categs = course.attributes.course_categories;
               return (
                 <div
@@ -343,7 +343,7 @@ export default function CourseList({
                         {course.attributes.title}
                       </Link>
                     </Heading2>
-                    <div className="p-2 container-sm:p-2.5 mt-4 container-sm:mt-5 bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-full flex items-center text-neutral-50 text-xs container-sm:text-sm font-medium">
+                    {/* <div className="p-2 container-sm:p-2.5 mt-4 container-sm:mt-5 bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg rounded-full flex items-center text-neutral-50 text-xs container-sm:text-sm font-medium">
                       <div className="relative flex items-center space-x-2 rtl:space-x-reverse">
                         {authors.data.map((author: any) => {
                           const avatarUrl = getStrapiMedia(
@@ -369,7 +369,7 @@ export default function CourseList({
                           );
                         })}
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               );

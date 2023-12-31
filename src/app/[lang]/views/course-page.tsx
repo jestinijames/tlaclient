@@ -80,7 +80,7 @@ export default function CoursePage({content}: {content: Content}) {
             <div>
               <div>
                 <Tabs defaultValue={tabList[0]} onValueChange={setActiveTab}>
-                  <TabsList className="grid grid-flow-col text-center text-gray-500 bg-gray-100 rounded-full p-1">
+                  <TabsList className="grid grid-flow-col sm:grid-flow-row text-center text-gray-500 bg-gray-100 sm:bg-white rounded-full p-1">
                     {tabList.map((tab, i) => (
                       <TabsTrigger key={tab} value={tab}>
                         <span
@@ -151,7 +151,7 @@ function Overview({data}: {data: Content}) {
                   <span className="flex-none  ">
                     <TbAtom2Filled
                       className="
-                                            h-10 w-10 text-[#2cbcac]
+                                            h-10 w-10 text-twitterBlue
                                           "
                     />
                   </span>
