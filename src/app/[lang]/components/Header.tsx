@@ -134,7 +134,12 @@ function TopNavBar({
         />
       </button>
 
-      <SideNavBar links={links} lang={lang} className="3xl:hidden" />
+      <SideNavBar
+        links={links}
+        socialLinks={socialLinks}
+        lang={lang}
+        className="3xl:hidden"
+      />
       {state.toggleMenu && (
         <MobileNavBar
           logo={navbarLogoUrl}
@@ -293,10 +298,12 @@ function MobileNavBar({
 
 function SideNavBar({
   links,
+  socialLinks,
   lang,
   className,
 }: {
   links: Array<NavLink>;
+  socialLinks: Array<SocialLink>;
   lang: string;
   className: string;
 }) {
@@ -342,7 +349,7 @@ function SideNavBar({
           );
         })}
 
-        <ContactModal>
+        <ContactModal socialLinks={socialLinks}>
           <Button
             className={`relative flex items-center group hover:text-tla-accent transition-all duration-300`}
           >

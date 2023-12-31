@@ -132,9 +132,8 @@ export default function CourseList({
                         <span className="sr-only">Other Categories</span>
                         <div>
                           <span className="hidden container-sm:inline">
-                            Other
+                            Other Categories
                           </span>
-                          Categories
                         </div>
                         <LuChevronsUpDown className="w-4 h-4 ms-2 -me-1" />
                       </Button>
@@ -153,10 +152,7 @@ export default function CourseList({
                             href="#"
                             className="flex items-center "
                             onClick={(event) => {
-                              handleCategorySelect(
-                                event,
-                                ""
-                              );
+                              handleCategorySelect(event, "");
                             }}
                           >
                             <div className="relative flex-shrink-0 w-12 h-12 rounded-lg me-4 overflow-hidden">

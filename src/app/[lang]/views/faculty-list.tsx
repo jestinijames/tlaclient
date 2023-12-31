@@ -1,5 +1,6 @@
 import type React from "react";
 
+import {DialogClose} from "@radix-ui/react-dialog";
 import Link from "next/link";
 import {BsPatchCheck} from "react-icons/bs";
 import {RiExpandRightFill} from "react-icons/ri";
@@ -11,7 +12,6 @@ import type {SocialLink} from "@/components/Header";
 import {getStrapiMedia} from "@/utils/api-helpers";
 import {RenderIcon} from "@/utils/render-icon";
 import {Heading2, Heading3, Heading4, Paragraph} from "@/utils/typography";
-import { DialogClose } from "@radix-ui/react-dialog";
 
 interface Subject {
   id: number;
@@ -164,12 +164,14 @@ export default function FacultyList({
                         })}
                       </nav>
 
-                     <DialogClose>
-                     <Button type="button" className="flex-shrink-0 relative h-auto inline-flex items-center justify-center rounded-full transition-colors border-transparent bg-black hover:bg-white hover:text-black text-white text-sm sm:text-base font-medium py-3 px-4 container-sm:py-3.5 container-sm:px-6 mt-8">
-                      Close
-                      </Button>
-                      </DialogClose>   
-
+                      <DialogClose>
+                        <Button
+                          type="button"
+                          className="flex-shrink-0 relative h-auto inline-flex items-center justify-center rounded-full transition-colors border-transparent bg-black hover:bg-white hover:text-black text-white text-sm sm:text-base font-medium py-3 px-4 container-sm:py-3.5 container-sm:px-6 mt-8"
+                        >
+                          Close
+                        </Button>
+                      </DialogClose>
                     </div>
                   </div>{" "}
                 </DialogContent>

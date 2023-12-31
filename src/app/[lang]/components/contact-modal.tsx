@@ -1,6 +1,7 @@
 "use client";
 
 import {zodResolver} from "@hookform/resolvers/zod";
+import Link from "next/link";
 import {useForm} from "react-hook-form";
 import * as z from "zod";
 
@@ -19,6 +20,9 @@ import {Textarea} from "@/components/ui/textarea";
 import {toast} from "@/components/ui/toast";
 
 import {Heading2, Heading3} from "@/utils/typography";
+
+import {RenderIcon} from "../utils/render-icon";
+import {SocialLink} from "./Header";
 
 const ContactFormSchema = z.object({
   name: z.string().min(2, {
@@ -128,7 +132,13 @@ function ContactForm() {
   );
 }
 
-export default function ContactModal({children}: {children: React.ReactNode}) {
+export default function ContactModal({
+  children,
+  socialLinks,
+}: {
+  children: React.ReactNode;
+  socialLinks: Array<SocialLink>;
+}) {
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -150,7 +160,7 @@ export default function ContactModal({children}: {children: React.ReactNode}) {
           {/* Body */}
           <div className="grid gap-8 container-lg:grid-cols-2">
             <div className="max-w-sm space-y-6">
-              <div>
+              {/* <div>
                 <Heading3 className="uppercase font-semibold text-sm  tracking-wider">
                   🗺 ADDRESS
                 </Heading3>
@@ -158,27 +168,43 @@ export default function ContactModal({children}: {children: React.ReactNode}) {
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Nostrum, eaque.
                 </span>
-              </div>
+              </div> */}
               <div>
                 <Heading3 className="uppercase font-semibold text-sm  tracking-wider">
                   💌 EMAIL
                 </Heading3>
                 <span className="block mt-2 text-neutral-500 ">
-                  nc.example@example.com
+                  info@truthandlifeacademy.org
                 </span>
               </div>
-              <div>
+              {/* <div>
                 <Heading3 className="uppercase font-semibold text-sm  tracking-wider">
                   ☎ PHONE
                 </Heading3>
                 <span className="block mt-2 text-neutral-500 ">
                   000-123-456-7890
                 </span>
-              </div>
+              </div> */}
               <div>
                 <Heading3 className="uppercase font-semibold text-sm  tracking-wider">
                   🌏 SOCIALS
                 </Heading3>
+                {socialLinks.map((link: SocialLink) => {
+                  return (
+                    <Link
+                      key={link.id}
+                      rel="noopener noreferrer"
+                      href={link.url}
+                      title={link.text}
+                      className=" w-7 h-7 container-sm:w-8 container-sm:h-8 flex items-center justify-center rounded-full text-xl hover:bg-tla-accent hover:text-white transition-all duration-300
+                            "
+                    >
+                      <div>
+                        <RenderIcon className="w-5 h-5" text={link.social} />
+                      </div>
+                    </Link>
+                  );
+                })}
               </div>
             </div>
             <div className="border border-neutral-100  container-lg:hidden" />

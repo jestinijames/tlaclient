@@ -94,7 +94,7 @@ export default function PodcastList({
           <div className="mt-16 flex flex-col container-sm:items-center container-sm:justify-between container-sm:flex-row">
             {/* Sort By */}
             <div className="block my-4 border-b w-full border-neutral-500 container-sm:hidden" />
-            <div className="flex justify-end">
+            {/* <div className="flex justify-end">
               <div className="flex-shrink-0 ">
                 <div className="relative">
                   <div>
@@ -147,7 +147,7 @@ export default function PodcastList({
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
           {/* This is the podcast list */}
           <div className="grid container-sm:grid-cols-2 container-lg:grid-cols-3 gap-x-6 gap-y-8 container-md:gap-x-8 container-md:gap-y-10 mt-8 container-lg:mt-10">

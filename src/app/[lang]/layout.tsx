@@ -112,7 +112,10 @@ export default async function RootLayout({
                 lang={params.lang}
               />
               <main className="w-full min-h-screen">{children}</main>
-              <Footer logoText={footer.footerLogo.logoText} />
+              <Footer
+                logoText={footer.footerLogo.logoText}
+                socialLinks={footer.socialLinks}
+              />
             </RouteTransition>
           </ThemeProvider>
         </MenuContextProvider>

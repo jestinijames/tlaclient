@@ -142,7 +142,7 @@ export default function Hero({data}: HeroProps) {
                           Welcome to
                         </span>
                         <AnimatedText
-                          text={data.title}
+                          text="Truth And Life Academy"
                           className="!text-6xl inline-block align-middle
             xl:!text-5xl lg:!text-center lg:!text-6xl md:!text-5xl sm:!text-3xl
             "
