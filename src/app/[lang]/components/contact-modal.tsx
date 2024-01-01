@@ -2,8 +2,9 @@
 
 import {zodResolver} from "@hookform/resolvers/zod";
 import Link from "next/link";
-import {useForm} from "react-hook-form";
-import * as z from "zod";
+import {SubmitHandler, useForm} from "react-hook-form";
+import {toast} from "sonner";
+import {z} from "zod";
 
 import {Button} from "@/components/ui/button";
 import {Dialog, DialogContent, DialogTrigger} from "@/components/ui/dialog";
@@ -17,47 +18,56 @@ import {
 } from "@/components/ui/form";
 import {Input} from "@/components/ui/input";
 import {Textarea} from "@/components/ui/textarea";
-import {toast} from "@/components/ui/toast";
 
 import {Heading2, Heading3} from "@/utils/typography";
 
+import {sendEmail} from "../_actions";
 import {RenderIcon} from "../utils/render-icon";
 import {SocialLink} from "./Header";
 
-const ContactFormSchema = z.object({
-  name: z.string().min(2, {
-    message: "Your name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email.",
-  }),
-  message: z.string().min(10, {
-    message: "Your message must be at least 10 characters.",
-  }),
+export const ContactFormSchema = z.object({
+  name: z.string().nonempty("Name is required."),
+  email: z.string().nonempty("Email is required.").email("Invalid email."),
+  message: z
+    .string()
+    .nonempty("Message is required.")
+    .min(6, {message: "Message must be at least 6 characters."}),
 });
 
+export type ContactFormInputs = z.infer<typeof ContactFormSchema>;
+
 function ContactForm() {
-  const form = useForm<z.infer<typeof ContactFormSchema>>({
+  const form = useForm<ContactFormInputs>({
     resolver: zodResolver(ContactFormSchema),
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(data: z.infer<typeof ContactFormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-  }
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: {isSubmitting},
+  } = form;
+
+  const processForm: SubmitHandler<ContactFormInputs> = async (data) => {
+    const result = await sendEmail(data);
+
+    if (result?.success) {
+      console.log({data: result.data});
+      toast.success("Email sent!");
+      reset();
+      return;
+    }
+
+    // toast error
+    console.log(result?.error);
+    toast.error("Something went wrong!");
+  };
 
   return (
     <Form {...form}>
       <form
         className="grid grid-cols-1 gap-6"
-        onSubmit={form.handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(processForm)}
       >
         <FormField
           name="name"
@@ -74,7 +84,7 @@ function ContactForm() {
                   className="block w-full border-dark-300 border-2 focus:border-primary-300 focus:ring focus:ring-primary-200/50 bg-white   rounded-full text-sm font-normal h-11 px-4 py-3 mt-1"
                   type="text"
                   placeholder="John Doe"
-                  {...form.register("name")}
+                  {...register("name")}
                 />
               </FormControl>
               <FormMessage />
@@ -97,7 +107,7 @@ function ContactForm() {
                   className="block w-full border-dark-300 border-2 focus:border-primary-300 focus:ring focus:ring-primary-200/50 bg-white   rounded-full text-sm font-normal h-11 px-4 py-3 mt-1"
                   type="email"
                   placeholder="John.Doe@xyz.com"
-                  {...form.register("email")}
+                  {...register("email")}
                 />
               </FormControl>
               <FormMessage />
@@ -114,7 +124,7 @@ function ContactForm() {
                 <Textarea
                   className="border-dark-300 border-2 block w-full text-sm rounded-xl border-neutral-200 focus:border-primary-300 focus:ring focus:ring-primary-200 focus:ring-opacity-50 bg-white  mt-1"
                   placeholder="Hi there, I would like to..."
-                  {...form.register("message")}
+                  {...register("message")}
                 />
               </FormControl>
               <FormMessage />
@@ -122,10 +132,11 @@ function ContactForm() {
           )}
         />
         <Button
+          disabled={isSubmitting}
           className="flex-shrink-0 relative h-auto inline-flex items-center justify-center rounded-full transition-colors border-transparent text-light bg-tla-primary hover:bg-primary-6000  text-sm container-sm:text-base font-medium py-3 px-4 container-sm:py-3.5 container-sm:px-6  "
           type="submit"
         >
-          Submit
+          {isSubmitting ? "Submitting..." : "Submit"}
         </Button>
       </form>
     </Form>
@@ -189,22 +200,24 @@ export default function ContactModal({
                 <Heading3 className="uppercase font-semibold text-sm  tracking-wider">
                   🌏 SOCIALS
                 </Heading3>
-                {socialLinks.map((link: SocialLink) => {
-                  return (
-                    <Link
-                      key={link.id}
-                      rel="noopener noreferrer"
-                      href={link.url}
-                      title={link.text}
-                      className=" w-7 h-7 container-sm:w-8 container-sm:h-8 flex items-center justify-center rounded-full text-xl hover:bg-tla-accent hover:text-white transition-all duration-300
+                <nav className="flex space-x-3 text-2xl text-neutral-600  ">
+                  {socialLinks.map((link: SocialLink) => {
+                    return (
+                      <Link
+                        key={link.id}
+                        rel="noopener noreferrer"
+                        href={link.url}
+                        title={link.text}
+                        className=" w-7 h-7 container-sm:w-8 container-sm:h-8 flex items-center justify-center rounded-full text-xl hover:bg-tla-accent hover:text-white transition-all duration-300
                             "
-                    >
-                      <div>
-                        <RenderIcon className="w-5 h-5" text={link.social} />
-                      </div>
-                    </Link>
-                  );
-                })}
+                      >
+                        <div>
+                          <RenderIcon className="w-5 h-5" text={link.social} />
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </nav>
               </div>
             </div>
             <div className="border border-neutral-100  container-lg:hidden" />

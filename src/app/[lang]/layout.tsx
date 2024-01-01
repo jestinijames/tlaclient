@@ -23,6 +23,8 @@ import {fetchAPI} from "@/utils/fetch-api";
 import RouteTransition from "@/utils/route-transition";
 import {ThemeProvider} from "@/utils/theme-provider";
 
+import Providers from "./providers";
+
 async function getGlobal(lang: string): Promise<any> {
   const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 
@@ -104,18 +106,20 @@ export default async function RootLayout({
         <MenuContextProvider>
           <ThemeProvider defaultTheme="light">
             <RouteTransition>
-              <Header
-                topLeftImageUrl={topLeftImageUrl}
-                navbarLogoUrl={navbarLogoUrl}
-                links={navbar.links}
-                socialLinks={footer.socialLinks}
-                lang={params.lang}
-              />
-              <main className="w-full min-h-screen">{children}</main>
-              <Footer
-                logoText={footer.footerLogo.logoText}
-                socialLinks={footer.socialLinks}
-              />
+              <Providers>
+                <Header
+                  topLeftImageUrl={topLeftImageUrl}
+                  navbarLogoUrl={navbarLogoUrl}
+                  links={navbar.links}
+                  socialLinks={footer.socialLinks}
+                  lang={params.lang}
+                />
+                <main className="w-full min-h-screen">{children}</main>
+                <Footer
+                  logoText={footer.footerLogo.logoText}
+                  socialLinks={footer.socialLinks}
+                />
+              </Providers>
             </RouteTransition>
           </ThemeProvider>
         </MenuContextProvider>

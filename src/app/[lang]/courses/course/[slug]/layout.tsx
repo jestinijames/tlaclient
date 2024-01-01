@@ -5,8 +5,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import {Toaster} from "@/components/ui/toast";
-
 import {fetchAPI} from "@/utils/fetch-api";
 
 async function getCourseHeader(slug: string) {
@@ -35,11 +33,5 @@ export default async function layout({
   const data = await getCourseHeader(slug);
   if (data.data.length === 0) return <h2>no courses found</h2>;
 
-  return (
-    <>
-      {children}
-
-      <Toaster />
-    </>
-  );
+  return <>{children}</>;
 }

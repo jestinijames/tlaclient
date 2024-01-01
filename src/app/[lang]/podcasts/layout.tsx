@@ -6,7 +6,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import PageLayout from "@/components/ui/page-layout";
-import {Toaster} from "@/components/ui/toast";
 
 import {getStrapiMedia} from "@/utils/api-helpers";
 import {fetchAPI} from "@/utils/fetch-api";
@@ -42,7 +41,6 @@ export default async function layout({
       <PageLayout heading="Podcasts" imageCoverUrl={podcastCoverUrl}>
         {children}
       </PageLayout>
-      <Toaster />
     </div>
   );
 }
