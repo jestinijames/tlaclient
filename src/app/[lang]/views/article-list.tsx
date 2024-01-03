@@ -303,12 +303,12 @@ export default function ArticlesList({
                           {article.attributes.authorsBio.data.attributes.name}
                         </span>
                       </div>
-                      <span className="text-neutral-500  mx-[6px] font-medium">
+                      {/* <span className="text-neutral-500  mx-[6px] font-medium">
                         ·
                       </span>
                       <span className="text-neutral-500  font-normal">
                         {formatDate(article.attributes.publishedAt)}
-                      </span>
+                      </span> */}
                     </div>
                     <h3 className=" block text-base font-semibold text-neutral-900 ">
                       <span

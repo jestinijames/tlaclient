@@ -24,6 +24,7 @@ import {Heading2, Heading3} from "@/utils/typography";
 import {sendEmail} from "../_actions";
 import {RenderIcon} from "../utils/render-icon";
 import {SocialLink} from "./Header";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 export const ContactFormSchema = z.object({
   name: z.string().nonempty("Name is required."),
@@ -138,6 +139,15 @@ function ContactForm() {
         >
           {isSubmitting ? "Submitting..." : "Submit"}
         </Button>
+
+        <DialogClose asChild>
+          <Button
+            type="button"
+            className="flex-shrink-0 relative h-auto inline-flex items-center justify-center rounded-full transition-colors border-transparent text-light bg-dark hover:bg-tla-primary   text-sm container-sm:text-base font-medium py-3 px-4 container-sm:py-3.5 container-sm:px-6 "
+          >
+            Close
+          </Button>
+        </DialogClose>
       </form>
     </Form>
   );

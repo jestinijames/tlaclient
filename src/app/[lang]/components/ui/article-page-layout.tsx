@@ -75,10 +75,10 @@ export default function ArticlePageLayout({
                           </span>
                         </div>
                         <div className="text-xs mt-[6px]">
-                          <span className="text-neutral-300">
+                          {/* <span className="text-neutral-300">
                             {formatDate(publishedAt)}
                           </span>
-                          <span className="mx-2 font-semibold">·</span>
+                          <span className="mx-2 font-semibold">·</span> */}
                           <span className="text-neutral-300">2 min read</span>
                         </div>
                       </div>
