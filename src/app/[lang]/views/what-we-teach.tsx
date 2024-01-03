@@ -9,6 +9,7 @@
 import {useMemo, useState} from "react";
 
 import Markdown from "react-markdown";
+import {RefTagger} from "react-reftagger";
 import remarkGfm from "remark-gfm";
 
 import PageLayout from "@/components/ui/page-layout";
@@ -20,6 +21,22 @@ import {RenderIcon} from "@/utils/render-icon";
 interface WhatWeTeachProps {
   data: any;
 }
+
+const customStyles = {
+  heading: {
+    backgroundColor: "#d7b7ff",
+    color: "#7851A9",
+    fontSize: "16px",
+  },
+
+  body: {
+    color: "#7851A9 !important",
+    backgroundColor: "#d7b7ff",
+    moreLink: {
+      color: "#a465b5",
+    },
+  },
+};
 
 export default function WhatWeTeach({data}: WhatWeTeachProps) {
   const coverImage = getStrapiMedia(data.picture.data.attributes.url) as string;
@@ -47,6 +64,11 @@ export default function WhatWeTeach({data}: WhatWeTeachProps) {
 
   return (
     <div>
+      <RefTagger
+        tooltipStyle="dark"
+        customStyle={customStyles}
+        bibleVersion={"ESV"}
+      />
       <PageLayout heading="What We Teach" imageCoverUrl={coverImage}>
         <div className="container relative pt-6 container-sm:pt-10 pb-16 container-lg:pt-20 container-lg:pb-28">
           <div className="p-5 mx-auto bg-white rounded-xl container-sm:rounded-3xl container-lg:rounded-[40px] shadow-lg container-sm:p-10 container-lg:p-16 ">

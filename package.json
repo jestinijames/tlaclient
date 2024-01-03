@@ -66,6 +66,7 @@
     "react-icons": "^4.11.0",
     "react-markdown": "^8.0.7",
     "react-player": "^2.13.0",
+    "react-reftagger": "^2.1.0",
     "react-slideshow-image": "^4.3.0",
     "react-tsparticles": "^2.12.2",
     "remark-gfm": "^3.0.1",
