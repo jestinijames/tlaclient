@@ -5,17 +5,7 @@ import type {PropsWithChildren} from "react";
 import {AnimatePresence, motion} from "framer-motion";
 import {usePathname} from "next/navigation";
 
-// Dont delete
-// function FrozenRouter(props: PropsWithChildren<object>) {
-//   const context = useContext(LayoutRouterContext);
-//   const frozen = useRef(context).current;
 
-//   return (
-//     <LayoutRouterContext.Provider value={frozen}>
-//       {props.children}
-//     </LayoutRouterContext.Provider>
-//   );
-// }
 
 // variants
 const transitionVariants = {
@@ -59,8 +49,8 @@ function Transition() {
         exit="exit"
         transition={{
           delay: 0.2,
-          duration: 0.6,
-          ease: "easeInOut",
+          duration: 0.8,
+          ease: [0.76, 0, 0.24, 1],
         }}
       />
       <motion.div
@@ -71,8 +61,8 @@ function Transition() {
         exit="exit"
         transition={{
           delay: 0.4,
-          duration: 0.6,
-          ease: "easeInOut",
+          duration: 0.8,
+          ease: [0.76, 0, 0.24, 1],
         }}
       />
       <motion.div
@@ -83,12 +73,14 @@ function Transition() {
         exit="exit"
         transition={{
           delay: 0.6,
-          duration: 0.6,
-          ease: "easeInOut",
+          duration: 0.8,
+          ease: [0.76, 0, 0.24, 1],
         }}
       />
     </>
   );
 }
+
+
 
 export default RouteTransition;

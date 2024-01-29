@@ -12,7 +12,7 @@ import "@/globals.css";
 
 import {MenuContextProvider} from "@/context/menu.context";
 import {i18n} from "@/i18n-config";
-import {Montserrat} from "next/font/google";
+import {Open_Sans} from "next/font/google";
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -54,7 +54,10 @@ async function getGlobal(lang: string): Promise<any> {
   return await fetchAPI(path, urlParamsObject, options);
 }
 
-const mont = Montserrat({subsets: ["latin"]});
+const mont = Open_Sans({
+  weight: ['400', '700'], // Specify the weights you want to include
+  subsets: ['latin'], // Specify any subsets if needed
+});
 
 export async function generateMetadata({
   params,

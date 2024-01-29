@@ -51,7 +51,7 @@
 }
 
 .wwt-content p {
-  @apply my-2  text-sm text-dark font-semibold w-full max-w-full;
+  @apply my-2  text-lg text-dark font-semibold w-full max-w-full leading-9;
 }
 .wwt-content h2 {
   @apply scroll-m-20 text-2xl font-extrabold tracking-tight container-lg:text-3xl my-2;
@@ -60,3 +60,4 @@
 .wwt-content h1 {
   @apply scroll-m-20 text-3xl font-extrabold tracking-tight container-lg:text-4xl;
 }
+

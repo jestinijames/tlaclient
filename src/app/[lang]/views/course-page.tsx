@@ -57,7 +57,7 @@ export default function CoursePage({content}: {content: Content}) {
       },
       curriculum: {
         name: "curriculum",
-        label: "curriculum",
+        label: "Curriculum",
         content: <Curriculum />,
       },
     };
