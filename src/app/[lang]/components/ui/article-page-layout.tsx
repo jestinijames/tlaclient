@@ -1,12 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+
+"use client";
+
 import type React from "react";
 
 import Image from "next/image";
 import Link from "next/link";
+import {useUrl} from "nextjs-current-url";
 
-import {formatDate} from "@/utils/api-helpers";
 import {Heading1} from "@/utils/typography";
+
+import {RenderIcon} from "../../utils/render-icon";
+import {Button} from "./button";
+import {Popover, PopoverContent, PopoverTrigger} from "./popover";
+import { FacebookIcon, FacebookShareButton, LinkedinIcon, LinkedinShareButton, TwitterShareButton, WhatsappIcon, WhatsappShareButton, XIcon } from "react-share";
 
 export default function ArticlePageLayout({
   children,
@@ -23,6 +31,8 @@ export default function ArticlePageLayout({
   authorName: string;
   authorImgUrl: any;
 }) {
+  const {href: currentUrl} = useUrl() ?? {};
+
   return (
     <div className="flex w-full flex-col items-center justify-center mt-20">
       {/* Cover Image Container */}
@@ -80,6 +90,100 @@ export default function ArticlePageLayout({
                           </span>
                           <span className="mx-2 font-semibold">·</span> */}
                           <span className="text-neutral-300">2 min read</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Share */}
+                    <div>
+                      <div className="flex flex-row space-x-2.5 rtl:space-x-reverse items-center">
+                        <div className="relative inline-block text-left">
+                          <Popover>
+                            <PopoverTrigger asChild>
+                              <Button
+                                className=" flex items-center justify-center focus:outline-none  bg-neutral-100 hover:bg-neutral-200   text-neutral-700  rounded-full"
+                                title="More"
+                                aria-haspopup="menu"
+                                aria-expanded="false"
+                                data-headlessui-state=""
+                              >
+                                <RenderIcon className="w-5 h-5" text="SHARE" />
+                              </Button>
+                            </PopoverTrigger>
+                            <PopoverContent className="absolute origin-top-right end-0 w-56 mt-2 bg-white dark:bg-neutral-900 rounded-2xl divide-y divide-neutral-100 shadow-lg ring-1 ring-black dark:ring-white ring-opacity-5 dark:ring-opacity-10 focus:outline-none z-30 transform opacity-100 scale-100">
+                              {/* <div
+                                className="absolute origin-top-right end-0 w-56 mt-2 bg-white dark:bg-neutral-900 rounded-2xl divide-y divide-neutral-100 shadow-lg ring-1 ring-black dark:ring-white ring-opacity-5 dark:ring-opacity-10 focus:outline-none z-30 transform opacity-100 scale-100"
+                                aria-labelledby="headlessui-menu-button-:r27:"
+                                id="headlessui-menu-items-:r33:"
+                                role="menu"
+                                data-headlessui-state="open"
+                                aria-activedescendant="headlessui-menu-item-:r34:"
+                              > */}
+
+                              {currentUrl && (
+                                <div
+                                  className="px-1 py-3 text-sm text-neutral-6000 dark:text-neutral-300"
+                                  role="none"
+                                >
+                                  <div
+                                    className="flex items-center rounded-xl w-full px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-neutral-100 truncate "
+                                  >
+                                    <FacebookShareButton className="w-full" url={currentUrl} >
+                                      <div className="flex flex-row items-center">
+                                      <FacebookIcon size={30} round />
+                                      <span className="ms-3">Facebook</span>
+                                      </div>
+                                      
+                                    
+                                    </FacebookShareButton>
+                                  </div>
+
+                                  <div
+                                    className="flex items-center rounded-xl w-full px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-neutral-100 truncate "
+                                  >
+                                    <TwitterShareButton className="w-full" url={currentUrl} >
+                                      <div className="flex flex-row items-center">
+                                      <XIcon size={30} round />
+                                      <span className="ms-3">Twitter</span>
+                                      </div>
+                                      
+                                    
+                                    </TwitterShareButton>
+                                  </div>
+
+
+                                  <div
+                                    className="flex items-center rounded-xl w-full px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-neutral-100 truncate "
+                                  >
+                                    <WhatsappShareButton className="w-full" url={currentUrl} >
+                                      <div className="flex flex-row items-center">
+                                      <WhatsappIcon size={30} round />
+                                      <span className="ms-3">Whatsapp</span>
+                                      </div>
+                                      
+                                    
+                                    </WhatsappShareButton>
+                                  </div>
+
+
+                                  <div
+                                    className="flex items-center rounded-xl w-full px-3 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-neutral-900 dark:hover:text-neutral-100 truncate "
+                                  >
+                                    <LinkedinShareButton className="w-full" url={currentUrl} >
+                                      <div className="flex flex-row items-center">
+                                      <LinkedinIcon size={30} round />
+                                      <span className="ms-3">LinkedIn</span>
+                                      </div>
+                                      
+                                    
+                                    </LinkedinShareButton>
+                                  </div>
+                                 
+                                </div>
+                              )}
+                              {/* </div> */}
+                            </PopoverContent>
+                          </Popover>
                         </div>
                       </div>
                     </div>

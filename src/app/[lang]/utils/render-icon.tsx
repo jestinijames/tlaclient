@@ -8,6 +8,7 @@ import {
   FaGooglePlusG,
   FaPeopleArrows,
   FaSearch,
+  FaShareAlt 
 } from "react-icons/fa";
 import {
   FaArrowLeftLong,
@@ -41,6 +42,8 @@ export function RenderIcon({
   className?: string;
 }) {
   switch (text) {
+	case "SHARE":
+		return <FaShareAlt className={` ${className}`} />;
     case "FACEBOOK":
       return <RiFacebookLine className={` ${className}`} />;
     case "TWITTER":
