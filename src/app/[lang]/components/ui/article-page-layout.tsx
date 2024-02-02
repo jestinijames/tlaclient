@@ -50,7 +50,7 @@ export default function ArticlePageLayout({
           <div className="absolute inset-0 bg-black text-white bg-opacity-30 flex flex-col items-center justify-center">
             <div className="max-w-[768px]">
               <div>
-                <div className="space-y-5">
+                <div className="space-y-5 p-5">
                   <div className="flex flex-wrap space-x-2">
                     <Link
                       className="transition-colors hover:text-white duration-300  inline-flex py-1 rounded-full font-medium text-xs !px-3 text-red-800 bg-red-100 hover:bg-red-800"
@@ -110,7 +110,7 @@ export default function ArticlePageLayout({
                                 <RenderIcon className="w-5 h-5" text="SHARE" />
                               </Button>
                             </PopoverTrigger>
-                            <PopoverContent className="absolute origin-top-right end-0 w-56 mt-2 bg-white dark:bg-neutral-900 rounded-2xl divide-y divide-neutral-100 shadow-lg ring-1 ring-black dark:ring-white ring-opacity-5 dark:ring-opacity-10 focus:outline-none z-30 transform opacity-100 scale-100">
+                            <PopoverContent className=" end-0 w-56 mt-2 bg-white dark:bg-neutral-900 rounded-2xl divide-y divide-neutral-100 shadow-lg ring-1 ring-black dark:ring-white ring-opacity-5 dark:ring-opacity-10 focus:outline-none z-30 transform opacity-100 scale-100">
                               {/* <div
                                 className="absolute origin-top-right end-0 w-56 mt-2 bg-white dark:bg-neutral-900 rounded-2xl divide-y divide-neutral-100 shadow-lg ring-1 ring-black dark:ring-white ring-opacity-5 dark:ring-opacity-10 focus:outline-none z-30 transform opacity-100 scale-100"
                                 aria-labelledby="headlessui-menu-button-:r27:"
